@@ -50,7 +50,10 @@ class CPhonyBL:public CPhonyBLCore
       ~CPhonyBL()
       {
          printf("Quit...\n");
-         pSerial->close();
+         if( pSerial )
+         {
+            pSerial->close();
+         }
       }
       virtual void systemEventLoop() override
       {
