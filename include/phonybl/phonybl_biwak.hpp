@@ -18,6 +18,7 @@
 
 #include <biwak/biwak.h>
 #include <biwak/iostream.h>
+#include <biwak/flash_spi.hpp>
 
 #include <phonybl/phonybl.hpp>
 
@@ -25,19 +26,16 @@
 /*--- Declarations ---------------------------------------------------------*/
 
 
-// A little bit 'quick and dirty'. Signals would be more clean.
-void readFlashData(int addr, void *dest, size_t size);
-void writeFlashData(int addr, void *src, size_t size);
-void eraseFlash();
-
 class CPhonyBL:public CPhonyBLCore
 {
    private:
-   CIOStream& m_io;
+      CIOStream &m_io;
+      CFlashSpi &m_flash;
        
    public:
-      CPhonyBL(CIOStream &io)
-         :m_io(io)
+      CPhonyBL(CIOStream &io, CFlashSpi &flash)
+         :m_io( io )
+         ,m_flash( flash )
       {};
 
       virtual int getChar() override
@@ -57,17 +55,18 @@ class CPhonyBL:public CPhonyBLCore
       }
       virtual void readFlashData(int addr, void *dest, size_t size) override
       {
-         ::readFlashData( addr, dest, size);
+         
+         m_flash.readData(addr, dest, size);
       }
       virtual void writeFlashData(int addr, void *src, size_t size) override
       {
-         ::writeFlashData( addr, src, size);
+         m_flash.writeData(addr, src, size);
       }
       virtual void eraseFlash() override
       {
-         ::eraseFlash();
+         m_flash.chipErase();
+         m_flash.waitForReady();
       }
-      
 };
 
 
