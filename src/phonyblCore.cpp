@@ -21,7 +21,7 @@
 #include <phonybl/phonybl.hpp>
 #include <lepto/log.h>
 #include <lepto/lepto.h>   // arraySize
-#include <unistd.h>        // usleep
+#include <biwak/sysTimer.hpp>
 
 
 /*--- Implementation -------------------------------------------------------*/
@@ -123,7 +123,7 @@ int CPhonyBLCore::getInput()
       systemEventLoop();
       if( input == -1 )
       {
-         usleep(100);
+         msleep(1);
       }
    }while( ( input == -1 )
            && ( counter < ( TIMEOUT_MS * 10 ) ) );
