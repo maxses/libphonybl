@@ -67,6 +67,7 @@ target_include_directories(
 target_link_libraries(
    phonybl
       lepto
+      biwak
       ${PLATFORM_LIBS}
 )
 
