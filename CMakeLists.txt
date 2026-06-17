@@ -44,11 +44,6 @@ else()
    message( FATAL_ERROR "Neither biwak nor host are enabled." )
 endif( HOST )
 
-add_definitions(
-   -DLEPTO_LOG_USE_PRETTY_PRINT
-   -DLEPTO_CONFIGURED
-)
-
 add_library(
    phonybl
       src/phonyblCore.cpp

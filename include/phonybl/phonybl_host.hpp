@@ -38,7 +38,7 @@ class CPhonyBL:public CPhonyBLCore
 
          if( !pSerial->open( QIODevice::ReadWrite ) )
          {
-            qInfo( qPrintable( pSerial->errorString() ) );
+            qInfo( "%s", qPrintable( pSerial->errorString() ) );
             qFatal( "Cloud not open serial device" );
          }
       };
