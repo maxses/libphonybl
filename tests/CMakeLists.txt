@@ -46,7 +46,7 @@ target_link_libraries(
    PRIVATE
       lepto
       phonybl
-      ${CATCH_LIBRARY}
+      ${CATCH2_TARGET}
 )
 
 
