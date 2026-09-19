@@ -81,5 +81,29 @@ if( "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64" OR HOST )
    add_subdirectory( tests )
 endif()
 
+install(
+   TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
+   LIBRARY DESTINATION lib
+   ARCHIVE DESTINATION lib
+   RUNTIME DESTINATION bin
+   INCLUDES DESTINATION include
+)
+
+# Includes have to be installed manually for some reason
+install(
+   DIRECTORY
+      include/phonybl
+   DESTINATION
+      include
+   COMPONENT Devel
+)
+
+install (
+   FILES
+      LICENSE
+   DESTINATION
+      share/doc/libphonybl
+)
+
 
 #---fin.-----------------------------------------------------------------------
