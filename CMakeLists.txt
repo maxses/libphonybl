@@ -9,6 +9,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project ( phonybl CXX )
 
+enable_testing()
+
 option( HOST "Compile host tools and tests." False )
 
 if ( NOT MCU_PLATFORM )
