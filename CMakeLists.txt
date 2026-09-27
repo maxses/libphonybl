@@ -24,8 +24,8 @@ if ( "${MCU_PLATFORM}" MATCHES "linux" )
     set( CMAKE_AUTOUIC_SEARCH_PATHS "ui" )
 
     # Check either Qt6 or Qt5
-    find_package( QT NAMES Qt5 Qt6 COMPONENTS Core Widgets Gui Network SerialPort REQUIRED )
-    find_package( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Gui Network SerialPort )
+    find_package( QT NAMES Qt5 Qt6 COMPONENTS Core Network SerialPort REQUIRED )
+    find_package( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Network SerialPort )
 
 endif( "${MCU_PLATFORM}" MATCHES "linux" )
 
