@@ -31,6 +31,12 @@ endif( "${MCU_PLATFORM}" MATCHES "linux" )
 
 enable_testing()
 
+if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR) # PROJECT_IS_TOP_LEVEL
+
+   set ( CMAKE_CXX_STANDARD 20 )
+
+endif()
+
 if( HOST )
    set( PLATFORM_HEADER include/phonybl/phonybl_host.hpp )
    set( PLATFORM_LIBS
