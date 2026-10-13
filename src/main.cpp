@@ -29,7 +29,6 @@
 int main(int argc, char *argv[])
 {
    QCoreApplication qapp(argc, argv);
-   int sta=0;
    CPhonyBL *bl=nullptr;
 
    QCoreApplication::setApplicationName("Phony-BL");
